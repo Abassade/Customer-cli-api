@@ -35,7 +35,7 @@ const questions = [
 ];
 
 program 
-  .version('1.2.0')
+  .version('1.0.0')
   .description('Client Management System')
 
 // Add Command
@@ -65,8 +65,8 @@ program
 
 // Remove Command
 program
-  .command('remove <_id>')
-  .alias('r')
+  .command('delete <_id>')
+  .alias('d')
   .description('Remove a customer')
   .action(_id => removeCustomer(_id));
 
@@ -74,7 +74,7 @@ program
 program
   .command('list')
   .alias('l')
-.description('List all customers')
+  .description('List all customers')
   .action(() => listCustomers());
 
 program.parse(process.argv);

@@ -1,8 +1,9 @@
+const Customer = require("../models/customer");
+require("../lib/connector");
 // Add Customer
 const addCustomer = (customer) => {
     Customer.create(customer).then(customer => {
       console.info('New Customer Added');
-      db.close();
     });
   }
   
@@ -14,25 +15,22 @@ const addCustomer = (customer) => {
       .then(customer => {
         console.info(customer);
         console.info(`${customer.length} matches`);
-        db.close();
       });
   }
   
   // Update Customer
   const updateCustomer = (_id, customer) => {
-    Customer.update({ _id }, customer)
+    Customer.updateOne({ _id }, customer)
       .then(customer => {
         console.info('Customer Updated');
-        db.close();
       });
   }
   
   // Remove Customer
   const removeCustomer = (_id) => {
-    Customer.remove({ _id })
+    Customer.deleteOne({ _id })
       .then(customer => {
         console.info('Customer Removed');
-        db.close();
       });
   }
   
@@ -42,7 +40,6 @@ const addCustomer = (customer) => {
       .then(customers => {
         console.info(customers);
         console.info(`${customers.length} customers`);
-        db.close();
       });
   }
   
@@ -51,6 +48,6 @@ const addCustomer = (customer) => {
     addCustomer,
     findCustomer,
     updateCustomer,
-  removeCustomer,
+    removeCustomer,
     listCustomers
   }
